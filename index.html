@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Panchanga — Modern</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Simple modern Panchanga (sun & moon times, phase)" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="brand">Panchanga</h1>
+        <p class="tag">Modern, responsive Panchanga — sunrise, moon, phase</p>
+      </div>
+    </header>
+
+    <main class="container main-grid">
+      <section class="card location-card">
+        <h2>Location</h2>
+        <div class="row">
+          <input id="place" placeholder="City or coordinates (lat,lon)" />
+          <button id="useGeolocation">Use my location</button>
+        </div>
+        <div class="muted" id="locLabel"></div>
+      </section>
+
+      <section class="card info-card">
+        <h2>Today</h2>
+        <div class="grid" id="panchanga">
+          <div class="pitem"><strong>Date</strong><div id="date"></div></div>
+          <div class="pitem"><strong>Sunrise</strong><div id="sunrise"></div></div>
+          <div class="pitem"><strong>Sunset</strong><div id="sunset"></div></div>
+          <div class="pitem"><strong>Moonrise</strong><div id="moonrise"></div></div>
+          <div class="pitem"><strong>Moonset</strong><div id="moonset"></div></div>
+          <div class="pitem"><strong>Moon</strong><div id="moonphase"></div></div>
+        </div>
+      </section>
+
+      <section class="card details-card">
+        <h2>Details</h2>
+        <div id="details" class="muted">Calculated locally in your browser using Geolocation or input coordinates.</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">Made with ❤️ — Static HTML/CSS/JS • Push to GitHub Pages to publish</div>
+    </footer>
+
+    <script src="https://unpkg.com/dayjs@1.11.9/dayjs.min.js"></script>
+    <script src="https://unpkg.com/suncalc/suncalc.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
