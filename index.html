@@ -3,48 +3,100 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Panchanga — Modern</title>
+    <title>Panchanga — Hindu Almanac</title>
     <link rel="stylesheet" href="styles.css" />
-    <meta name="description" content="Simple modern Panchanga (sun & moon times, phase)" />
+    <meta name="description" content="Modern Panchanga: Tithi, Nakshatra, sun/moon times, lunar phase" />
   </head>
   <body>
     <header class="site-header">
-      <div class="container">
-        <h1 class="brand">Panchanga</h1>
-        <p class="tag">Modern, responsive Panchanga — sunrise, moon, phase</p>
+      <div class="header-content">
+        <div class="header-top">
+          <h1 class="brand">Hindu Almanac</h1>
+          <div class="location-input-group">
+            <input id="place" placeholder="Enter city or coordinates" class="place-input" />
+            <button id="useGeolocation" class="geo-btn">📍 My Location</button>
+          </div>
+        </div>
+        <div id="dateDisplay" class="date-display"></div>
       </div>
     </header>
 
-    <main class="container main-grid">
-      <section class="card location-card">
-        <h2>Location</h2>
-        <div class="row">
-          <input id="place" placeholder="City or coordinates (lat,lon)" />
-          <button id="useGeolocation">Use my location</button>
+    <main class="container">
+      <!-- Panchanga Cards -->
+      <div class="panchanga-grid">
+        <div class="panchanga-card">
+          <div class="card-label">TITHI</div>
+          <div class="card-value" id="tithi">—</div>
+          <div class="card-desc" id="tithiDesc"></div>
         </div>
-        <div class="muted" id="locLabel"></div>
+        <div class="panchanga-card">
+          <div class="card-label">NAKSHATRA</div>
+          <div class="card-value" id="nakshatra">—</div>
+          <div class="card-desc" id="nakshatraDesc"></div>
+        </div>
+        <div class="panchanga-card">
+          <div class="card-label">YOGA</div>
+          <div class="card-value" id="yoga">—</div>
+        </div>
+        <div class="panchanga-card">
+          <div class="card-label">KARANA</div>
+          <div class="card-value" id="karana">—</div>
+        </div>
+      </div>
+
+      <!-- Weekly View -->
+      <section class="weekly-section">
+        <h2>Week View</h2>
+        <div class="week-grid" id="weekView"></div>
       </section>
 
-      <section class="card info-card">
-        <h2>Today</h2>
-        <div class="grid" id="panchanga">
-          <div class="pitem"><strong>Date</strong><div id="date"></div></div>
-          <div class="pitem"><strong>Sunrise</strong><div id="sunrise"></div></div>
-          <div class="pitem"><strong>Sunset</strong><div id="sunset"></div></div>
-          <div class="pitem"><strong>Moonrise</strong><div id="moonrise"></div></div>
-          <div class="pitem"><strong>Moonset</strong><div id="moonset"></div></div>
-          <div class="pitem"><strong>Moon</strong><div id="moonphase"></div></div>
+      <!-- Sun Timings -->
+      <section class="info-section">
+        <h3>Sun Timings</h3>
+        <div class="timings-grid">
+          <div class="timing-item">
+            <div class="timing-label">SUNRISE</div>
+            <div class="timing-value" id="sunrise">—</div>
+          </div>
+          <div class="timing-item">
+            <div class="timing-label">SUNSET</div>
+            <div class="timing-value" id="sunset">—</div>
+          </div>
+          <div class="timing-item">
+            <div class="timing-label">MOONRISE</div>
+            <div class="timing-value" id="moonrise">—</div>
+          </div>
+          <div class="timing-item">
+            <div class="timing-label">MOONSET</div>
+            <div class="timing-value" id="moonset">—</div>
+          </div>
         </div>
       </section>
 
-      <section class="card details-card">
-        <h2>Details</h2>
-        <div id="details" class="muted">Calculated locally in your browser using Geolocation or input coordinates.</div>
+      <!-- Tabs -->
+      <section class="tabs-section">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="panchang">Panchang</button>
+          <button class="tab-btn" data-tab="muhurat">Muhurat</button>
+          <button class="tab-btn" data-tab="festivals">Festivals</button>
+        </div>
+        <div class="tab-content">
+          <div id="panchang" class="tab-pane active">
+            <div class="info-grid">
+              <div class="info-item"><strong>Paksha</strong><span id="paksha">—</span></div>
+              <div class="info-item"><strong>Yoga</strong><span id="yogaFull">—</span></div>
+              <div class="info-item"><strong>Karana</strong><span id="karanaFull">—</span></div>
+              <div class="info-item"><strong>Moon Phase</strong><span id="moonPhase">—</span></div>
+            </div>
+          </div>
+          <div id="muhurat" class="tab-pane"><p>Muhurat times calculated locally.</p></div>
+          <div id="festivals" class="tab-pane"><p>Festival calendar coming soon.</p></div>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container">Made with ❤️ — Static HTML/CSS/JS • Push to GitHub Pages to publish</div>
+      <p>Made with ❤️ by Emergent • Modern Panchanga Calculator</p>
     </footer>
 
     <script src="https://unpkg.com/dayjs@1.11.9/dayjs.min.js"></script>
